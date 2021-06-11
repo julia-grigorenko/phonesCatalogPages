@@ -160,43 +160,45 @@ const phones = [
 class PhonesCatalogue {
   constructor(options) {
     this._el = options.el;
+    this._phones = options.phones;
 
+    const template = document.getElementById('phone-catalogue-template').innerHTML;
+    this._compiledTemplate = _.template(template);
+    
+    
     this._render();
-
     this._el.addEventListener('click', this._onPhoneClick.bind(this))
   }
 
-  _render() {
-    let html = `<ul class="phones">`;
+    _render() {
+        // let html = `<ul class="phones">`;
+        // phones.forEach((phone) => {
+        //     html += `
+        //         <li class="thumbnail" data-element="phoneItem" data-phone-id="${phone.id}">
+        //         <a href="#!/phones/${phone.id}" class="thumb" data-element="phoneItemLink">
+        //             <img alt="${phone.name}" src="${phone.imageUrl}">
+        //         </a>
+        //         <a href="#!/phones/${phone.id}" data-element="phoneItemLink">${phone.name}</a>
+        //         <p>${phone.snippet}</p>
+        //         </li>
+        //     `;
+        // });
+        // html += '</ul>';
+        // this._el.innerHTML = html;
 
-    phones.forEach((phone) => {
-      html += `
-        <li class="thumbnail" data-element="phoneItem" data-phone-id="${phone.id}">
-          <a href="#!/phones/${phone.id}" class="thumb" data-element="phoneItemLink">
-            <img alt="${phone.name}" src="${phone.imageUrl}">
-          </a>
-          <a href="#!/phones/${phone.id}" data-element="phoneItemLink">${phone.name}</a>
-          <p>${phone.snippet}</p>
-        </li>
-      `;
-    });
-
-
-    html += '</ul>';
-
-    this._el.innerHTML = html;
-
-  }
-
-  _onPhoneClick(event) {
-    let phoneItemLink = event.target.closest('[data-element="phoneItemLink"]');
-
-    if (!phoneItemLink) {
-      return;
+        this._el.innerHTML = this._compiledTemplate({
+            phones: this._phones
+        });
     }
 
-    let selectedPhoneItem = phoneItemLink.closest('[data-element="phoneItem"]');
+    _onPhoneClick(event) {
+        let phoneItemLink = event.target.closest('[data-element="phoneItemLink"]');
 
-    alert(selectedPhoneItem.dataset.phoneId);
-  }
+        if (!phoneItemLink) {
+        return;
+        }
+
+        let selectedPhoneItem = phoneItemLink.closest('[data-element="phoneItem"]');
+        alert(selectedPhoneItem.dataset.phoneId);
+    }
 }
