@@ -1,0 +1,24 @@
+{
+  "name": "phonesCatalogPages",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "dependencies": {
+    "webpack": "^5.45.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yulia-grigorenko/phonesCatalogPages.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yulia-grigorenko/phonesCatalogPages/issues"
+  },
+  "homepage": "https://github.com/yulia-grigorenko/phonesCatalogPages#readme"
+}
